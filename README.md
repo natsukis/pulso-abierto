@@ -2,7 +2,8 @@
 
 Aplicación web que consulta el precio actual de **Bitcoin, Ethereum y Solana** en la API pública de CoinGecko. Permite buscar por nombre o símbolo, elegir la moneda de cotización (USD, EUR o ARS), ver el detalle de cada criptomoneda y marcar favoritas, que se conservan al recargar.
 
-**Aplicación publicada:** _(se completa después del despliegue)_
+**Aplicación publicada:** https://pulso-abierto-lac.vercel.app
+**Repositorio:** https://github.com/natsukis/pulso-abierto
 
 **Autor:** Benjamin Natsuki Hokama — Programación Web, Actividad 4 (versión final).
 
@@ -77,4 +78,17 @@ Las pruebas están junto al código que prueban (`*.test.ts(x)`). Ninguna consul
 
 ## Verificación final
 
-_(se completa después del despliegue)_
+**Fecha de verificación:** 25 de noviembre de 2026.
+
+- **Pruebas ejecutadas:** `npm run test` con 6 archivos y 19 pruebas correctas (favoritos, consulta, error y reintento, servicio, store y cancelación de consultas). También `npm run lint` sin advertencias.
+- **Build generado correctamente:** `npm run build` (comprobación de tipos con `tsc -b` y `vite build`) generó `dist/` sin errores.
+- **Preview comprobado:** con `npm run preview` la aplicación cargó, consultó la API real (una solicitud por vista), navegó del listado al detalle y abrió un detalle por acceso directo, sin errores en la consola. Los recorridos de la consigna 1 se comprobaron sobre el build con una prueba automatizada en el navegador (47/47): consulta, detalle y regreso, favoritos al cambiar de vista y al recargar, formulario con validación, vista móvil (390 px) y de escritorio (1280 px).
+- **Despliegue realizado:** el repositorio `natsukis/pulso-abierto` está vinculado con Vercel (preset Vite, `npm run build`, salida `dist`, sin variables de entorno). En https://pulso-abierto-lac.vercel.app se comprobó con la API real (18/18):
+  - la aplicación carga y la consulta devuelve las tres criptomonedas;
+  - el formulario valida y filtra;
+  - los favoritos se marcan, se reflejan en el detalle y se conservan al recargar;
+  - se navega del listado al detalle y se vuelve con los criterios conservados;
+  - `/criptomonedas/ethereum` se puede recargar y `/criptomonedas/solana` abre por acceso directo;
+  - un id inexistente y una ruta desconocida muestran sus mensajes;
+  - la vista móvil no tiene desplazamiento horizontal;
+  - la consola no muestra errores.
